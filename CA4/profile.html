@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <script src="http://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .fixed-sidebar {
+            position: fixed;
+            height: 100%;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 h-screen flex">
+    <div class="w-64 bg-[#111111] shadow-md flex flex-col fixed-sidebar">
+        <div class="p-4 border-b">
+            <h1 class="text-xl font-bold text-[#f6f6f6]">Profile</h1>
+        </div>
+        <nav class="flex-1 p-4">
+            <ul>
+                <li>
+                    <a href="#" id="profile" class="text-[#f6f6f6] block py-2 px-4 rounded hover:bg-[#f6f6f6] hover:text-[#111111]">Profile</a>
+                </li>
+                <li>
+                    <a href="#" id="dashboard" class="text-[#f6f6f6] block py-2 px-4 rounded hover:bg-[#f6f6f6] hover:text-[#111111]">Dashboard</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="p-4 border-t">
+            <button class="block py-2 px-4 rounded bg-red-500 text-white w-full">Log Out</button>
+        </div>
+    </div>
+
+        <!-- Main content -->
+        <div class="flex-1 ml-64 p-4">
+            <!-- Top right profile picture -->
+            <div class="flex justify-end mb-4">
+                <img src="https://via.placeholder.com/40" alt="Profile Picture" id="top-profile-picture" class="rounded-full w-10 h-10">
+            </div>
+
+            <!-- Profile Section -->
+            <div id="profile-section">
+                <h1 class="text-2xl font-bold mb-4">Profile</h1>
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700">Profile Picture</label>
+                        <input type="file" id="profile-picture" accept="image/*" class="mt-1 block w-full">
+                    </div>
+                    <!-- <div>
+                        <label class="block text-gray-700">Name</label>
+                        <input type="text" id="name" class="mt-1 block w-full border border-gray-300 rounded p-2">
+                    </div> -->
+                    <div>
+                        <label class="block text-gray-700">Full Name</label>
+                        <input type="text" id="full-name" class="mt-1 block w-full border border-gray-300 rounded p-2">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">Location</label>
+                        <input type="text" id="location" class="mt-1 block w-full border border-gray-300 rounded p-2">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">Password</label>
+                        <input type="password" id="password" class="mt-1 block w-full border border-gray-300 rounded p-2">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">Change Password</label>
+                        <input type="password" id="change-password" class="mt-1 block w-full border border-gray-300 rounded p-2">
+                    </div>
+                    <div>
+                        <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded" onclick="saveProfile()">Save</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        
+        function saveProfile() {
+            const profilePicture = document.getElementById('profile-picture').files[0];
+            const name = document.getElementById('name').value;
+            const fullName = document.getElementById('full-name').value;
+            const location = document.getElementById('location').value;
+            const password = document.getElementById('password').value;
+            const changePassword = document.getElementById('change-password').value;
+
+            if (profilePicture) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('top-profile-picture').src = e.target.result;
+                };
+                reader.readAsDataURL(profilePicture);
+            }
+
+            console.log('Profile Information:', {
+                name,
+                fullName,
+                location,
+                password,
+                changePassword
+            });
+
+            alert('Profile saved successfully!');
+        }
+
+
+        document.getElementById('dashboard').addEventListener('click', function() {
+
+            window.location.href = 'dashboard.html'; 
+        });
+
+        document.getElementById('logout').addEventListener('click', function() {
+            window.location.href = 'Homepage.html'; 
+        });
+    </script>
+</body>
+</html>

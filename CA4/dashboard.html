@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="http://cdn.tailwindcss.com"></script>
+    <style>
+
+        .container-container:hover {
+            transform: scale(1.05);
+            background-color: #f6f6f6;
+            color: #111111;
+        }
+        .fixed-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 h-screen flex">
+    <div class="w-64 bg-[#111111] shadow-md flex flex-col fixed-sidebar">
+        <div class="p-4 border-b">
+            <h1 class="text-xl font-bold text-[#f6f6f6]">Admin</h1>
+        </div>
+        <nav class="flex-1 p-4">
+            <ul>
+                <li>
+                    <a href="#" id="profile" class="text-[#f6f6f6] block py-2 px-4 rounded hover:bg-[#f6f6f6] hover:text-[#111111]">Profile</a>
+                </li>
+                <li>
+                    <a href="#" id="dashboard" class="text-[#f6f6f6] block py-2 px-4 rounded hover:bg-[#f6f6f6] hover:text-[#111111]">Dashboard</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="p-4 border-t">
+            <button id="logout" class="block py-2 px-4 rounded bg-red-500 text-white w-full">Log Out</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-6 ml-64">
+        <!-- <div class="h-20 p-6 bg-[#111111] rounded shadow-md "></div> -->
+
+
+        <div id="container 1" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6 cursor-pointer hover:bg-[#f6f6f6] hover:text-black">
+            <div class="text-[#f6f6f6] container-container p-4 bg-[#111111] rounded shadow-md transition-transform duration-300">
+                <h3 class="text-xl font-bold mb-2">Container 1</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="text-[#f6f6f6] container-container p-4 bg-[#111111] rounded shadow-md transition-transform duration-300">
+                <h3 class="text-xl font-bold mb-2">Container 2</h3>
+                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="text-[#f6f6f6] container-container p-4 bg-[#111111] rounded shadow-md transition-transform duration-300">
+                <h3 class="text-xl font-bold mb-2">Container 3</h3>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+            </div>
+        </div>
+        <!-- Graph Container -->
+        <div class="text-[#f6f6f6] bg-[#111111] p-6 rounded shadow-md cursor-pointer">
+            <h3 class="text-xl font-bold mb-4">Graph Title</h3>
+            <img src="graph.jpg" alt="Graph Image" class="w-full mb-4">
+            <p>This graph shows the trends and patterns over the last quarter. It provides insights into the performance metrics and helps in making data-driven decisions.</p>
+        </div>
+    </div>
+
+    <script>
+      document.getElementById('profile').addEventListener('click', function(event) {
+          event.preventDefault();
+          document.getElementById('profile-section').classList.remove('hidden');
+          document.getElementById('settings-section').classList.add('hidden');
+          this.classList.add('active');
+          document.getElementById('dashboard').classList.remove('active');
+      });
+  
+      document.getElementById('dashboard').addEventListener('click', function(event) {
+          event.preventDefault();
+          document.getElementById('profile-section').classList.add('hidden');
+          document.getElementById('settings-section').classList.remove('hidden');
+          this.classList.add('active');
+          document.getElementById('profile').classList.remove('active');
+      });
+
+      document.getElementById('profile').addEventListener('click', function() {
+        window.location.href = 'profile.html'; 
+    });
+
+    document.getElementById('logout').addEventListener('click', function() {
+        window.location.href = 'Homepage.html'; 
+    });
+
+    
+  </script>
+  </body>
+</html>
